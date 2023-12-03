@@ -1,0 +1,44 @@
+{
+  "name": "random_emoji_people",
+  "version": "0.1.0",
+  "description": "Generate random emoji people. Allows you to opt into or out of seniors and babies. Won't repeat until list is complete; wraps and re-randomizes afterwards. Omit already-used people.",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "scripts": {
+    "clean": "rimraf dist && mkdir dist && rimraf docs && mkdir docs && rimraf build && mkdir build && cd build && mkdir typescript && mkdir rollup && cd .. && cd src && cd ts && rimraf generated_code && mkdir generated_code && cd .. && cd ..",
+    "site": "cp -r src/site/* docs/ && touch docs/.nojekyll",
+    "write_version": "node ./src/build_js/version.js",
+    "typescript": "tsc --build tsconfig.json",
+    "rollup": "rollup -c --bundleConfigAsCjs",
+    "rollup-mjs": "rollup -c rollup.config-mjs.js --bundleConfigAsCjs",
+    "terser": "terser build/rollup/index.js -o dist/index.js",
+    "terser-mjs": "terser build/rollup/index-mjs.js -o dist/index.mjs",
+    "build": "npm run clean && npm run site && npm run write_version && npm run typescript && npm run rollup && npm run rollup-mjs && npm run terser && npm run terser-mjs",
+    "test": "vitest"
+  },
+  "keywords": [
+    "random",
+    "emoji",
+    "people",
+    "generate",
+    "young",
+    "old",
+    "senior",
+    "baby",
+    "man",
+    "woman",
+    "skin",
+    "tones",
+    "fitzpatrick",
+    "stonecypher"
+  ],
+  "author": "John Haugeland <stonecypher@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "rimraf": "^5.0.5",
+    "rollup": "^4.6.1",
+    "terser": "^5.24.0",
+    "typescript": "^5.3.2"
+  }
+}
