@@ -25,7 +25,7 @@ const Blonde = '👱',
 // people who aren't blond are base + skin + zero-width joiner + hair
 // we're skipping color because no font implements it, and direction because we don't care
 // we're skipping fitzpatrick 2 because it's blond in most fonts and the eyebrow change is too hard to see
-// we're skipping angrogynous adult because the glyph is really bad in most fonts
+// we're skipping androgynous adult because the glyph is really bad in most fonts
 
 const list_std_people: string[] = [];
 
